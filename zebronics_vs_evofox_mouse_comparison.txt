@@ -1,0 +1,36 @@
+### Research Report: Zebronics Mouse vs. Evofox Mouse
+
+#### Product Description:
+Both the Evofox and Zebronics mice are designed for various gaming and computing needs, offering ergonomic designs and precise tracking.
+
+- **EvoFox Blaze Programmable Gaming Mouse:** Features customizable RGB lighting, macros, and DPI settings.
+- **Zebronics Mouse:** Available in wired and wireless options with ergonomic design and optical tracking.
+
+#### Pros:
+1. **EvoFox:**
+   - Customizable RGB lighting
+   - Macros for automation
+   - High DPI settings (200 to 12800)
+   - 7000 FPS polling rate
+
+2. **Zebronics:**
+   - Multiple connectivity options (Bluetooth and Wi-Fi)
+   - Ergonomic design with UPE foot pads
+   - Long battery life
+   - Affordable price point
+
+#### Cons:
+1. **EvoFox:**
+   - Some users reported issues with software compatibility.
+   - Higher price point compared to Zebronics.
+
+2. **Zebronics:**
+   - Limited customization options compared to EvoFox.
+   - Not as high DPI settings as some other gaming mice.
+
+#### Reddit User Sentiment:
+- **EvoFox:** Users generally appreciate the customization features and RGB lighting, but some have reported software issues.
+- **Zebronics:** Users praise the ergonomic design and long battery life. Some users prefer Zebronics for its lightweight feel during extended gaming sessions.
+
+#### Overall Conclusion:
+The Evofox mouse offers more advanced customization options and higher DPI settings, making it a better choice for users who require extensive control over their gaming experience. However, if budget is a concern or you prioritize ergonomic design and long battery life, the Zebronics mouse could be a suitable alternative. Both mice provide reliable performance, but the EvoFox stands out with its programmable features.
