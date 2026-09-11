@@ -6,9 +6,13 @@ import os
 DESKTOP=Path.home()/"OneDrive"/"Desktop"
 @tool
 def create_folder(folder_name:str):
-    """Create a new folder in the users desktop"""
+    """Create a new folder or nested folder in the users desktop"""
     folder_path= DESKTOP/folder_name
-    folder_path.mkdir( exist_ok=True)
+    folder_path.mkdir(parents=True, exist_ok=True)
+    if folder_path.exists() and folder_path.is_dir():
+        return f"folder '{folder_name}'succesfully created"
+    return f"folder '{folder_name}' was not created"
+
 
     return f"folder created '{folder_name}'at '{folder_path}'"
 @tool
@@ -65,12 +69,39 @@ def read_webpage(webpage_url:str):
     except Exception as ex:
         return f"webpage '{webpage_url}' had an error {str(ex)}"
 @tool
-def write_file(file_path:str,content:str):
-    """Write ur findings in the file path """
+def write_file(file_path: str, content: str):
+    """Create a file on the user's Desktop and write content into it."""
+
     try:
-        os.makedirs(os.path.dirname(file_path),exist_ok=True) if os.path.dirname(file_path) else None
-        with open(file_path,"w",encoding="utf-8") as f:
-            f.write(content)
-        return f"Successfully wrote the content to '{file_path}'"
+        file_path = Path(file_path)
+
+        if not file_path.is_absolute():
+            file_path = DESKTOP / file_path
+
+        file_path.parent.mkdir(parents=True, exist_ok=True)
+
+        file_path.write_text(content, encoding="utf-8")
+
+        if not file_path.exists():
+            return f"FAILED: File was not created at '{file_path}'"
+
+        if not file_path.is_file():
+            return f"FAILED: Path exists but is not a file: '{file_path}'"
+
+        saved_content = file_path.read_text(encoding="utf-8")
+
+        if saved_content != content:
+            return "FAILED: File was created but content verification failed."
+
+        return f"SUCCESS: File created and verified at '{file_path}'"
+
     except Exception as ex:
-        return f"failed to write the content to '{file_path}: {str(ex)}'"
+        return f"FAILED: Could not write file '{file_path}': {type(ex).__name__}: {ex}"
+if __name__ == "__main__":
+    result = write_file.invoke({
+        "file_path": "S3_test/test2.md",
+        "content": "hello from Cosmicon"
+    })
+
+    print(result)
+

@@ -2,13 +2,15 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from data import CaseRecord
 from langchain_core.messages import ToolMessage
+from langchain_groq import ChatGroq
 from tools import create_folder,list_folder,delete_folder,search_web,read_webpage,write_file
-llm=ChatOpenAI(
-    base_url="http://127.0.0.1:1234/v1",
-    api_key="lm_studio",
-    model="qwen2.5-coder-7b-instruct",
+llm = ChatOpenAI(
+    base_url="http://127.0.0.1:20128/v1",
+    api_key="sk-7605b268e864287a-8c83d5-bb0751f4",
+    model="auto/coding",
     temperature=0.1
 )
+
 tools = [create_folder,
          list_folder,
          delete_folder,
@@ -29,7 +31,15 @@ tool_map={
 
 prompt = ChatPromptTemplate.from_messages([
     ("user", """You are an AI assistant named Cosmicon that can use tools when necessary.
-
+    when the user prompts u to do folder management YOU have to follow these instructions
+    
+    FOLDER CREATION:
+- When the user asks to create nested folders, create the complete folder hierarchy in a single create_folder tool call.
+- Use "/" to represent nested folders.
+- For example, if the user says "create folder A and inside it create folder B", call:
+  create_folder("A/B")
+- Do not create A and B as separate Desktop folders.
+- The create_folder tool creates missing parent directories automatically.
     When the user asks you to research a product:
 
     1. Identify the specific product being researched.
